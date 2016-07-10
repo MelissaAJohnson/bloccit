@@ -60,3 +60,5 @@ group :production do
  gem 'turbolinks'
  # Bootstrap provides layouts, forms, buttons, icons, Javascript functions, and more
  gem 'bootstrap-sass'
+ # Alternative IRB shell
+ gem 'pry-rails'
