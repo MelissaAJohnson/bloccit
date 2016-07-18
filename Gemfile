@@ -61,5 +61,7 @@ group :production do
  gem 'turbolinks'
  # Bootstrap provides layouts, forms, buttons, icons, Javascript functions, and more
  gem 'bootstrap-sass'
+ # Used for encrypting User passwords
+ gem 'bcrypt'
  # Alternative IRB shell
  gem 'pry-rails'
