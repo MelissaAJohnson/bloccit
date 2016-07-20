@@ -17,7 +17,20 @@
 @import "bootstrap";
 
 .user-info {
-  margin-top: 9px;
+  padding: 5px 6px 7px 7px;
+  width: 200px;
+}
+
+.user-gravatar {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border-radius: 1px;
+}
+
+.user-details {
+    float: right;
+    width: 70%;
 }
 
 .nav {
