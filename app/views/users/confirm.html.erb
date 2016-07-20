@@ -1,0 +1,12 @@
+<h1>Sign Up Confirmation</h1>
+
+<h2>Are you sure these values are correct?</h2>
+<p><b>Name</b>: <%= @name %></p>
+<p><b>Email</b>: <%= @email %></p>
+
+<div style="float: left; width: 75px">
+  <%= button_to "Yes", {controller: "users", action: "create", params: params}, class: 'btn btn-success' %>
+</div>
+<div style="float: left;">
+  <%= button_to "No", new_user_path, method: :get, class: 'btn btn-default' %>
+</div>
