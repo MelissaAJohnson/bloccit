@@ -9,4 +9,13 @@ class Post < ActiveRecord::Base
   validates :body, length: { minimum: 20 }, presence: true
   validates :topic, presence: true
   validates :user, presence: true
+
+  def ordered_by_title
+    Post.order(:title)
+  end
+
+  def ordered_by_reverse_created_at
+    Post.order(created_at: :asc)
+  end
+
 end
