@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'labels/show'
+
   resources :topics do
     resources :posts, except: [:index]
   end
@@ -11,7 +13,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  get 'about' => 'welcome#about'
+  get 'labels/show'
+  resources :labels, only: [:show]
 
+  get 'about' => 'welcome#about'
   root 'welcome#index'
 end
