@@ -5,26 +5,26 @@ class CommentsController < ApplicationController
    def create
      if params[:post_id]
        @parent = Post.find(params[:post_id])
-     elsif params[:otpic_id]
+     elsif params[:topic_id]
        @parent = Topic.find(params[:topic_id])
      end
 
-     comment = @parent.comments.new(comment_params)
-     comment.user = current_user
+     @comment = @parent.comments.new(comment_params)
+     @comment.user = current_user
 
-     if comment.save
+     if @comment.save
        flash[:notice] = "Comment saved successfully."
        if @parent.is_a?(Post)
-         redirect_to [@post.topic, @post]
-       elsif @pareent.is_a?(Topic)
-         redirect_to [@topic]
+         redirect_to [@parent.topic, @parent]
+       elsif @parent.is_a?(Topic)
+         redirect_to @parent
        end
      else
        flash[:alert] = "Comment failed to save."
        if @parent.is_a?(Post)
-         redirect_to [@post.topic, @post]
+         redirect_to [@parent.topic, @parent]
        elsif @parent.is_a?(Topic)
-         redirect_to [@topic]
+         redirect_to @parent
        end
      end
    end
