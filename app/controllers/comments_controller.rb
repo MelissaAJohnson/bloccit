@@ -3,11 +3,10 @@ class CommentsController < ApplicationController
    before_action :authorize_user, only: [:destroy]
 
    def create
-     id = params[:post_id] || params[:topic_id]
      if params[:post_id]
-       @parent = Post.find id
-     elsif params[:topic_id]
-       @parent = Topic.find id
+       @parent = Post.find(params[:post_id])
+     elsif params[:otpic_id]
+       @parent = Topic.find(params[:topic_id])
      end
 
      comment = @parent.comments.new(comment_params)
@@ -15,44 +14,30 @@ class CommentsController < ApplicationController
 
      if comment.save
        flash[:notice] = "Comment saved successfully."
-       if params[:post_id]
+       if @parent.is_a?(Post)
          redirect_to [@post.topic, @post]
-       else
+       elsif @pareent.is_a?(Topic)
          redirect_to [@topic]
        end
      else
        flash[:alert] = "Comment failed to save."
-       if params[:post_id]
+       if @parent.is_a?(Post)
          redirect_to [@post.topic, @post]
-       else
+       elsif @parent.is_a?(Topic)
          redirect_to [@topic]
        end
      end
    end
 
    def destroy
-     id = params[:post_id] || params[:topic_id]
-     if params[:post_id]
-       @parent = Post.find id
-     elsif params[:topic_id]
-       @parent = Topic.find id
-     end
-    comment = @parent.comments.find(params[:id])
+     comment = Comment.find(params[:id])
 
      if comment.destroy
        flash[:notice] = "Comment was deleted successfully."
-       if params[:post_id]
-         redirect_to [@parent, @post]
-       else
-         redirect_to [@parent, @topic]
-       end
+       redirect_to :back
      else
        flash[:alert] = "Comment couldn't be deleted. Try again."
-       if params[:post_id]
-         redirect_to [@parent, @post]
-       else
-         redirect_to [@parent, @topic]
-       end
+       redirect_to :back
      end
    end
 

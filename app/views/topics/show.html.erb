@@ -15,7 +15,9 @@
      </p>
      <% if current_user %>
        <h4>Comments</h4>
-       <%= render @topic.comments, locals: {parent: @topic } %>
+       <% @topic.comments.each do |comment| %>
+           <%= render partial: 'comments/comment', locals: { parent: @topic, comment: comment } %>
+       <% end %>
      <% end %>
      <h4>Posts</h4>
      <% @topic.posts.each do |post| %>
