@@ -13,6 +13,11 @@
        <br />
        <%= @topic.description %>
      </p>
+     <% if current_user %>
+       <h4>Comments</h4>
+       <%= render @topic.comments, locals: {parent: @topic } %>
+     <% end %>
+     <h4>Posts</h4>
      <% @topic.posts.each do |post| %>
        <div class="media">
          <div class="media-body">
