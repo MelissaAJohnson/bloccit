@@ -65,3 +65,4 @@ group :production do
  gem 'bcrypt'
  # Alternative IRB shell
  gem 'pry-rails'
+ gem 'figaro', '1.0'
