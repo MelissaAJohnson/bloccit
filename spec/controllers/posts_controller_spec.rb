@@ -359,7 +359,7 @@ RSpec.describe PostsController, type: :controller do
     describe "DELETE destroy" do
       it "returns http redirect" do
         delete :destroy, topic_id: my_topic.id, id: my_post.id
-        expect(response).to redirect_to([my_topic])
+        expect(response).to redirect_to([my_topic, my_post])
       end
     end
   end
