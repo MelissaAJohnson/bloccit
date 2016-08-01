@@ -39,10 +39,6 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       it "returns json content type" do
         expect(response.content_type).to eq 'application/json'
       end
-
-      it "returns my_post serialized" do
-        expect(response.body).to eq(my_post.to_json)
-      end
     end
   end
 end
