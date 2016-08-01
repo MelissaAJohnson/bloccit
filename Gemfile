@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 
+gem 'responders', '~> 2.0'
+
 =begin
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -64,6 +66,5 @@ group :production do
  gem 'bootstrap-sass'
  # Used for encrypting User passwords
  gem 'bcrypt'
- # Alternative IRB shell
- gem 'pry-rails'
+
  gem 'figaro', '1.0'
