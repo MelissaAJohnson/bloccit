@@ -42,7 +42,7 @@
         <div class="media">
           <br />
           <div class="media-left">
-            <%= image_tag current_user.avatar_url(48), class: "gravatar" %>
+            <%= image_tag favorite.post.user.avatar_url(48), class: "gravatar" %>
           </div>
           <div class="media-body">
             <h3 class="media-heading"> <%= render partial: 'posts/post', locals: { post: favorite.post } %> </h3>
